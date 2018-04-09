@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import Header from '../Header/Header.js';
+import MediaList from '../MediaList/MediaList.js';
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      instaResult: [],
+      accountName: 'Erwan'
+    };
+  }
+
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Erwan Instagram Account</h1>
-        </header>
-        <p className="App-intro">
-          Here i will insert the fetch images from insta API
-        </p>
+        <Header accountName={this.state.accountName}/>
+        <MediaList instaResult={this.state.instaResult}/>
       </div>
     );
   }

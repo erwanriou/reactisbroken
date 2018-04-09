@@ -1,0 +1,13 @@
+header {
+  display: flex;
+  background-color: #e6e3ff;
+  flex-direction: column;
+  justify-content: center;
+  height: 7rem;
+}
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  color: black;
+}

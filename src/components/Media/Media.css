@@ -1,0 +1,13 @@
+.image {
+  display: flex;
+  width: 20rem;
+  height: 20rem;
+  overflow: hidden;
+  justify-content: center;
+  margin-right: 1px;
+  margin-top: 1px;
+}
+
+img {
+  height: 20rem;
+}
