@@ -31,7 +31,9 @@ const Insta = {
         let jsonResponse = await response.json();
         let medias = jsonResponse.data.map(media => ({
           id: media.id,
-          image: media.images.standard_resolution.url
+          image: media.images.standard_resolution.url,
+          likes: media.likes.count,
+          tags: media.tags
         }));
         return medias;
       }
