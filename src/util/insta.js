@@ -6,18 +6,17 @@ let accessToken;
 
 const Insta = {
   getAccessToken() {
-    //check if token exist
     if (accessToken) {
       return new Promise(resolve => resolve(accessToken));
     }
-    //token ref
-    return fetch(`https://api.instagram.com/oauth/authorize/?client_id=${client_id}&redirect_uri=${redirectURI}&response_type=token`, {
-      method: 'POST'
-    }).then(response => {
-      return response.json();
-    }).then(jsonResponse => {
-      accessToken = jsonResponse.access_token;
-    });
+    const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/);
+    if (accessTokenMatch) {
+      accessToken = accessTokenMatch[1];
+      return accessToken;
+    } else {
+      const Url = `https://api.instagram.com/oauth/authorize/?client_id=${client_id}&redirect_uri=${redirectURI}&response_type=token`
+      window.location = Url;
+    }
   },
   async display() {
     if (!accessToken) {
@@ -25,16 +24,14 @@ const Insta = {
     }
     try {
       let response = await fetch(`https://api.instagram.com/v1/users/self/media/recent/?access_token=${accessToken}`, {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${accessToken}`
-        }
+        method: 'GET'
       });
       if (response.ok) {
+        console.log(response);
         let jsonResponse = await response.json();
-        let medias = jsonResponse.medias.data.map(media => ({
-          id: media.data.id,
-          image: media.data.images.standard_resolution.url
+        let medias = jsonResponse.data.map(media => ({
+          id: media.id,
+          image: media.images.standard_resolution.url,
         }));
         return medias;
       }
