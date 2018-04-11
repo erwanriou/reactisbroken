@@ -1,7 +1,7 @@
 .image {
   display: flex;
-  width: 20rem;
-  height: 20rem;
+  width: calc(20% - 1px);
+  height: auto;
   overflow: hidden;
   justify-content: center;
   margin-right: 1px;
@@ -9,5 +9,5 @@
 }
 
 img {
-  height: 20rem;
+  height: auto;
 }
