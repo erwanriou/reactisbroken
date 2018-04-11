@@ -6,7 +6,7 @@ class Header extends React.Component {
   render () {
     return (
       <header>
-        <h1>{this.props.accountName} Instagram Account</h1>
+        <h1>{this.props.accountName} trying to import images</h1>
       </header>
     );
   }
