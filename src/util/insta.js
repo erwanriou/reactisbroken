@@ -1,4 +1,4 @@
-const redirectURI = "http://localhost:3000/"
+const redirectURI = "http://react-isbroken.surge.sh/"
 const client_id = "b7236dfe4cc34c148c64fe214a2d57a8";
 
 
